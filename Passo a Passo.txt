@@ -1,0 +1,5 @@
+1 - Instalar o Cocos Creator
+2 -  Criar a conta no Cocos Creator
+3 - logar no Cocos Creator
+4 - importar todos os Assets necessarios.
+	Exemplos: Imagem dos inimigos, Imagem dos Jogadores...
