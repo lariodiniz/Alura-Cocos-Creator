@@ -12,29 +12,18 @@ cc.Class({
     extends: cc.Component,
 
     properties: {
-        // foo: {
-        //     // ATTRIBUTES:
-        //     default: null,        // The default value will be used only when the component attaching
-        //                           // to a node for the first time
-        //     type: cc.SpriteFrame, // optional, default is typeof default
-        //     serializable: true,   // optional, default is true
-        // },
-        // bar: {
-        //     get () {
-        //         return this._bar;
-        //     },
-        //     set (value) {
-        //         this._bar = value;
-        //     }
-        // },
         _acelerando: false,
-        _direcao: cc.Vec2
+        _direcao: cc.Vec2,
+        tiroPrefab: cc.Prefab,
+        velocidade: 10
     },
 
     // LIFE-CYCLE CALLBACKS:
 
     onLoad: function () {
-        // add key down and key up event
+        
+        cc.director.getCollisionManager().enabled = true;
+
         cc.systemEvent.on(cc.SystemEvent.EventType.KEY_DOWN, this.onKeyDown, this);
         cc.systemEvent.on(cc.SystemEvent.EventType.KEY_UP, this.onKeyUp, this);
 
@@ -44,12 +33,27 @@ cc.Class({
             this.mudarDirecao,
             this
         );
+
+        canvas.on(
+            "mousedown",
+            this.atirar,
+            this
+        );
     },
 
     /*destroy () {
         cc.systemEvent.off(cc.SystemEvent.EventType.KEY_DOWN, this.onKeyDown, this);
         cc.systemEvent.off(cc.SystemEvent.EventType.KEY_UP, this.onKeyUp, this);
     },*/
+
+    atirar: function (event) {
+        let tiro = cc.instantiate(this.tiroPrefab);
+        tiro.parent = this.node.parent;
+        tiro.position = this.node.position;
+
+        let componenteTiro = tiro.getComponent("tiro");
+        componenteTiro.direcao = this._direcao;
+    },
 
     mudarDirecao: function (event) {
         let posicaoMouse = event.getLocation();
@@ -83,7 +87,9 @@ cc.Class({
 
     update (dt) {
         if (this._acelerando){
-            this.node.position = this.node.position.add(this._direcao)
+
+            let deslocamento = this._direcao.mul(this.velocidade * dt);
+            this.node.position = this.node.position.add(deslocamento);
         }        
 
     },
