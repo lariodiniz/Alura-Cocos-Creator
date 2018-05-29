@@ -18,13 +18,14 @@ cc.Class({
     },
 
     tomarDano(){
+        let jogador = this._alvo.getComponent("Jogador");
+        jogador.adicionaPonto(10);
         this.node.destroy();
     },
 
-    mudarDirecao () {
-        let direcao = this._alvo.position.sub(this.node.position);
-        direcao = direcao.normalize();
-        this._direcao = direcao;
+    mudarDirecao () {             
+        this._direcao = this.calcularDirecao(this._alvo.position);        
+        this.node.rotation = this.olharPara(this._direcao);
     },
 
     start () {

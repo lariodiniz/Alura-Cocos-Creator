@@ -12,6 +12,22 @@ let Personagem = cc.Class({
 
     },
 
+    calcularDirecao (destino) {
+
+        let posicao  = destino.sub(this.node.position);
+        posicao  = posicao.normalize();
+        return posicao ;
+
+    },
+
+    olharPara (direcao) {
+
+        let angulo = Math.atan2(direcao.y, direcao.x);
+        angulo = - angulo * (180 / Math.PI);
+        return angulo;
+
+    },
+
     atirar (event) {
         let disparo = cc.instantiate(this.tiroPrefab);
         

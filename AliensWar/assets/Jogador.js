@@ -6,13 +6,19 @@ cc.Class({
     properties: {
         _acelerando: false,        
         velocidade: 10,
-        vida: 100
+        vidaMaxima: 100,
+        _vidaAtual: 0,
+        barraVida: cc.ProgressBar,
+        pontuacao: 0,
+        label : cc.Label
     },
 
     // LIFE-CYCLE CALLBACKS:
 
-    onLoad: function () {
+    onLoad () {
         
+        this._vidaAtual = this.vidaMaxima;
+
         cc.director.getCollisionManager().enabled = true;
 
         cc.systemEvent.on(cc.SystemEvent.EventType.KEY_DOWN, this.onKeyDown, this);
@@ -30,6 +36,13 @@ cc.Class({
             this.atirar,
             this
         );
+
+        this.barraVida.progress = 1;
+    },
+
+    adicionaPonto (pontos){
+        this.pontuacao += pontos;
+        this.label.string = "Pontos: "+this.pontuacao;
     },
 
     /*destroy () {
@@ -40,16 +53,20 @@ cc.Class({
     mudarDirecao (event) {
         let posicaoMouse = event.getLocation();
         posicaoMouse = new cc.Vec2(posicaoMouse.x, posicaoMouse.y);
-        let direcao = posicaoMouse.sub(this.node.position);
-        
-        direcao = direcao.normalize();
-
-        this._direcao = direcao;
+        this._direcao = this.calcularDirecao(posicaoMouse);        
+        this.node.rotation = this.olharPara(this._direcao);
     },
 
     tomarDano(dano){
 
-        this.vida -= dano;
+        this._vidaAtual -= dano;
+        let porcentamVida = this._vidaAtual / this.vidaMaxima;
+
+        this.barraVida.progress = porcentamVida;
+
+        if (this._vidaAtual < 0){
+            cc.director.loadScene("GameOver")
+        }
 
     },
 
