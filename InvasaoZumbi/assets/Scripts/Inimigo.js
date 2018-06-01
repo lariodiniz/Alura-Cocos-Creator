@@ -3,16 +3,18 @@ cc.Class({
 
     properties: {
         alvo: cc.Node,
+        distanciaDeAtaque : cc.Float,
         _movimentacao: cc.Component,
-        _controleAnimacao: cc.Component,
-        distanciaDeAtaque : cc.Float
+        _controleAnimacao: cc.Component
     },
 
     // LIFE-CYCLE CALLBACKS:
 
     onLoad () {
+        
         this._movimentacao = this.getComponent("Movimentacao");
         this._controleAnimacao = this.getComponent("ControleDeAnimacao");
+        
 
     },
 
@@ -25,7 +27,7 @@ cc.Class({
         this._controleAnimacao.mudaAnimacao(direcao, "Andar");
 
         if (distancia < this.distanciaDeAtaque){
-            cc.director.pause();
+            this.alvo.getComponent("Jogador").vivo = false;
         }
 
     },

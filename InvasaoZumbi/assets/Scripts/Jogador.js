@@ -6,7 +6,8 @@ cc.Class({
         _movimentacao: cc.Component,
         _controleAnimacao: cc.Component,
         tiro: cc.Prefab,
-        _canvas: cc.Canvas
+        _canvas: cc.Canvas,
+        vivo: true
 
     },
 
@@ -22,6 +23,8 @@ cc.Class({
         this._canvas = cc.find("Canvas");
         this._canvas.on("mousedown", this.atirar, this);
         this._canvas.on("mousemove", this.mudarDirecaoDaAnimacao, this);
+
+        this.vivo = true;
     },   
 
     start () {
