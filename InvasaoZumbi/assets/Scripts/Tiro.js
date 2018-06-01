@@ -11,7 +11,10 @@ cc.Class({
     },
 
     onCollisionEnter (outro){
-        outro.node.destroy();
+        if (outro.node.group == "inimigo"){
+            outro.node.destroy();
+        }
+        
         this.node.destroy()
     },
 

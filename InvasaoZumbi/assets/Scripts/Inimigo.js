@@ -2,7 +2,7 @@ cc.Class({
     extends: cc.Component,
 
     properties: {
-        alvo: cc.Node,
+        _alvo: cc.Node,
         distanciaDeAtaque : cc.Float,
         _movimentacao: cc.Component,
         _controleAnimacao: cc.Component
@@ -11,7 +11,7 @@ cc.Class({
     // LIFE-CYCLE CALLBACKS:
 
     onLoad () {
-        
+        this._alvo = cc.find("Personagem");
         this._movimentacao = this.getComponent("Movimentacao");
         this._controleAnimacao = this.getComponent("ControleDeAnimacao");
         
@@ -19,7 +19,7 @@ cc.Class({
     },
 
     update (deltaTime) {
-        let direcao = this.alvo.position.sub(this.node.position);
+        let direcao = this._alvo.position.sub(this.node.position);
 
         let distancia = direcao.mag();
 
@@ -27,7 +27,7 @@ cc.Class({
         this._controleAnimacao.mudaAnimacao(direcao, "Andar");
 
         if (distancia < this.distanciaDeAtaque){
-            this.alvo.getComponent("Jogador").vivo = false;
+            this._alvo.getComponent("Jogador").vivo = false;
         }
 
     },
