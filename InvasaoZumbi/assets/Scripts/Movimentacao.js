@@ -3,7 +3,8 @@ cc.Class({
 
     properties: {
         _direcao: cc.Vec2,
-        velocidade: cc.Float
+        velocidade: cc.Float,
+        _deltaTime: 0
     },
 
     // LIFE-CYCLE CALLBACKS:
@@ -15,11 +16,23 @@ cc.Class({
     },
 
     update (deltaTime) {        
-        let descolamento = this._direcao.mul(deltaTime * this.velocidade);
-        this.node.position = this.node.position.add(descolamento);
+        this._deltaTime = deltaTime;
     },
 
     setDirecao (direcao){
         this._direcao = direcao.normalize();
+    },
+
+    andarParaFrente(){
+        this._andar(1);
+    },
+
+    andarParaTras(){
+        this._andar(-1);
+    },    
+
+    _andar(sentido){
+        let descolamento = this._direcao.mul(sentido * this._deltaTime * this.velocidade);
+        this.node.position = this.node.position.add(descolamento);
     }
 });

@@ -24,6 +24,7 @@ cc.Class({
         let distancia = direcao.mag();
 
         this._movimentacao.setDirecao(direcao);
+        this._movimentacao.andarParaFrente();   
         this._controleAnimacao.mudaAnimacao(direcao, "Andar");
 
         if (distancia < this.distanciaDeAtaque){

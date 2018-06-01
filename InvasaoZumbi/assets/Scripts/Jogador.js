@@ -5,10 +5,9 @@ cc.Class({
         _direcao: cc.Vec2,
         _movimentacao: cc.Component,
         _controleAnimacao: cc.Component,
-        tiro: cc.Prefab,
         _canvas: cc.Canvas,
+        tiro: cc.Prefab,        
         vivo: true
-
     },
 
     // LIFE-CYCLE CALLBACKS:
@@ -62,6 +61,7 @@ cc.Class({
 
     update (deltaTime) {        
         this._movimentacao.setDirecao(this._direcao);        
+        this._movimentacao.andarParaFrente();   
     },
 
     teclaPressionada(event){        
