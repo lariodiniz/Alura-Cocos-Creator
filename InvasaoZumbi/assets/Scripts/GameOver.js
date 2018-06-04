@@ -11,7 +11,7 @@ cc.Class({
     onLoad () {
         cc.director.resume();
         this._gameOver = cc.find("GameOver");
-        let jogador = cc.find("Personagem");
+        let jogador = cc.find("Personagens/Personagem");
         this._jogador = jogador.getComponent("Jogador");
 
         let canvas = cc.find("Canvas");

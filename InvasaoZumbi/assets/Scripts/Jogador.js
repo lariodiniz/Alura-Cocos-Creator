@@ -6,6 +6,7 @@ cc.Class({
         _movimentacao: cc.Component,
         _controleAnimacao: cc.Component,
         _canvas: cc.Canvas,
+        _camera: cc.Node,
         tiro: cc.Prefab,        
         vivo: true
     },
@@ -23,6 +24,7 @@ cc.Class({
         this._canvas.on("mousedown", this.atirar, this);
         this._canvas.on("mousemove", this.mudarDirecaoDaAnimacao, this);
 
+        this._camera = cc.find("Camera");
         this.vivo = true;
     },   
 
@@ -44,7 +46,11 @@ cc.Class({
     calcularDirecaoMause(event){
         let posicaoMouse = event.getLocation();
         posicaoMouse = new cc.Vec2(posicaoMouse.x, posicaoMouse.y);
-        let direcao = posicaoMouse.sub(this.node.position);
+        posicaoMouse =  this._canvas.convertToNodeSpaceAR(posicaoMouse);
+
+        let posicaoJogador = this._camera.convertToNodeSpaceAR(this.node.position);
+
+        let direcao = posicaoMouse.sub(posicaoJogador);
         return direcao;
     },
 

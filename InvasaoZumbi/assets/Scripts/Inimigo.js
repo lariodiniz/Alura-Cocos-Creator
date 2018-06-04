@@ -11,7 +11,7 @@ cc.Class({
     // LIFE-CYCLE CALLBACKS:
 
     onLoad () {
-        this._alvo = cc.find("Personagem");
+        this._alvo = cc.find("Personagens/Personagem");
         this._movimentacao = this.getComponent("Movimentacao");
         this._controleAnimacao = this.getComponent("ControleDeAnimacao");
         
