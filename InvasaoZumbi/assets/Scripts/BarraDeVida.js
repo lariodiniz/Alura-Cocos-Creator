@@ -14,8 +14,7 @@ cc.Class({
 
     atualizaBarraDeVida (evento) {
         
-        let dados = evento.getUserData();
-        console.log(dados.vidaAtual);
+        let dados = evento.getUserData();        
         this.barraDeVida.progress = dados.vidaAtual / dados.vidaMaxima;
     },
 

@@ -2,10 +2,11 @@ cc.Class({
     extends: cc.Component,
 
     properties: {
-        _alvo: cc.Node,
-        distanciaDeAtaque : cc.Float,
+        _alvo: cc.Node,        
         _movimentacao: cc.Component,
-        _controleAnimacao: cc.Component
+        _controleAnimacao: cc.Component,
+        
+        distanciaDeAtaque : cc.Float
     },
 
     // LIFE-CYCLE CALLBACKS:
@@ -15,12 +16,14 @@ cc.Class({
         this._movimentacao = this.getComponent("Movimentacao");
         this._controleAnimacao = this.getComponent("ControleDeAnimacao");
         this.node.on("SofrerDano", this.morrer, this);
+        
 
     },
 
     morrer () {
         let eventoMorte = new cc.Event.EventCustom("ZumbiMorreu", true);
         this.node.dispatchEvent(eventoMorte);
+        
         this.node.destroy();
     },    
 

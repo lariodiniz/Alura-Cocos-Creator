@@ -7,10 +7,11 @@ cc.Class({
         _controleAnimacao: cc.Component,
         _canvas: cc.Canvas,
         _camera: cc.Node,
+        _vidaAtual: cc.Float,
+        _audioTiro: cc.AudioSource,
         tiro: cc.Prefab,        
         vivo: true,
-        _vidaAtual: cc.Float,
-        vidaMaxima: cc.Float,
+        vidaMaxima: cc.Float      
     },
 
     // LIFE-CYCLE CALLBACKS:
@@ -18,6 +19,7 @@ cc.Class({
     onLoad () {
         this._movimentacao = this.getComponent("Movimentacao");
         this._controleAnimacao = this.getComponent("ControleDeAnimacao");
+        this._audioTiro = this.getComponent(cc.AudioSource);
 
         cc.systemEvent.on(cc.SystemEvent.EventType.KEY_DOWN, this.teclaPressionada, this);
         cc.systemEvent.on(cc.SystemEvent.EventType.KEY_UP, this.teclaSolta, this);
@@ -78,6 +80,8 @@ cc.Class({
         disparo.parent = this.node.parent;
         disparo.position = this.node.position;
         disparo.getComponent("Movimentacao").setDirecao(direcao);
+
+        this._audioTiro.play();
         
     },
 
