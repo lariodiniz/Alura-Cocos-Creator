@@ -14,9 +14,15 @@ cc.Class({
         this._alvo = cc.find("Personagens/Personagem");
         this._movimentacao = this.getComponent("Movimentacao");
         this._controleAnimacao = this.getComponent("ControleDeAnimacao");
-        
+        this.node.on("SofrerDano", this.morrer, this);
 
     },
+
+    morrer () {
+        let eventoMorte = new cc.Event.EventCustom("ZumbiMorreu", true);
+        this.node.dispatchEvent(eventoMorte);
+        this.node.destroy();
+    },    
 
     update (deltaTime) {
         let direcao = this._alvo.position.sub(this.node.position);
@@ -28,7 +34,7 @@ cc.Class({
         this._controleAnimacao.mudaAnimacao(direcao, "Andar");
 
         if (distancia < this.distanciaDeAtaque){
-            this._alvo.getComponent("Jogador").vivo = false;
+            this._alvo.emit("SofreDano");
         }
 
     },

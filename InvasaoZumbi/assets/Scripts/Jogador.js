@@ -8,7 +8,9 @@ cc.Class({
         _canvas: cc.Canvas,
         _camera: cc.Node,
         tiro: cc.Prefab,        
-        vivo: true
+        vivo: true,
+        _vidaAtual: cc.Float,
+        vidaMaxima: cc.Float,
     },
 
     // LIFE-CYCLE CALLBACKS:
@@ -26,10 +28,24 @@ cc.Class({
 
         this._camera = cc.find("Camera");
         this.vivo = true;
+
+        this.node.on("SofreDano", this.sofrerDano, this);
+        this._vidaAtual = this.vidaMaxima;
     },   
 
-    start () {
+    sofrerDano () {
+        this._vidaAtual -= 1;
+        let eventoPerdeVida = new cc.Event.EventCustom("JogadoraPerdeuVida", true);
+        eventoPerdeVida.setUserData({
+            vidaAtual : this._vidaAtual,
+            vidaMaxima : this.vidaMaxima
+        });
 
+        this.node.dispatchEvent(eventoPerdeVida);
+        
+        if (this._vidaAtual <= 0){
+            this.vivo = false;
+        }
     },
 
     mudarDirecaoDaAnimacao(event){
