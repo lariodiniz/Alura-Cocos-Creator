@@ -71,8 +71,8 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": 606,
-      "y": 249
+      "x": 673,
+      "y": 252
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -116,9 +116,10 @@
     },
     "_enabled": true,
     "_alvo": null,
-    "distanciaDeAtaque": "50",
     "_movimentacao": null,
-    "_controleAnimacao": null
+    "_controleAnimacao": null,
+    "distanciaDeAtaque": "50",
+    "dano": "20"
   },
   {
     "__type__": "d2a1b3AgKtAEYrHviqli25x",

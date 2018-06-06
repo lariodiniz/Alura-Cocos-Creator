@@ -2,13 +2,15 @@ cc.Class({
     extends: cc.Component,
 
     properties: {
-        _movimentacao : cc.Component
+        _movimentacao : cc.Component,
+        _audioTiro: cc.AudioSource
     },
 
     // LIFE-CYCLE CALLBACKS:
 
     onLoad () {
-        cc.director.getCollisionManager().enabled = true;
+        cc.director.getCollisionManager().enabled = true;     
+        this._audioTiro = this.getComponent(cc.AudioSource);   
         this._movimentacao = this.getComponent("Movimentacao");
     },
 
@@ -17,8 +19,11 @@ cc.Class({
         this.node.destroy()
     },
 
-    start () {
-
+    inicializa (pai, posicao, direcao) {
+        this.node.parent = pai;
+        this.node.position = posicao;
+        this.getComponent("Movimentacao").setDirecao(direcao);
+        this.getComponent(cc.AudioSource).play();
     },
 
     update (dt) {

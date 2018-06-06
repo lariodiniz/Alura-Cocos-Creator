@@ -6,7 +6,8 @@ cc.Class({
         _movimentacao: cc.Component,
         _controleAnimacao: cc.Component,
         
-        distanciaDeAtaque : cc.Float
+        distanciaDeAtaque : cc.Float,
+        dano: cc.Float
     },
 
     // LIFE-CYCLE CALLBACKS:
@@ -16,8 +17,6 @@ cc.Class({
         this._movimentacao = this.getComponent("Movimentacao");
         this._controleAnimacao = this.getComponent("ControleDeAnimacao");
         this.node.on("SofrerDano", this.morrer, this);
-        
-
     },
 
     morrer () {
@@ -37,7 +36,7 @@ cc.Class({
         this._controleAnimacao.mudaAnimacao(direcao, "Andar");
 
         if (distancia < this.distanciaDeAtaque){
-            this._alvo.emit("SofreDano");
+            this._alvo.emit("SofreDano", {dano: this.dano});
         }
 
     },
