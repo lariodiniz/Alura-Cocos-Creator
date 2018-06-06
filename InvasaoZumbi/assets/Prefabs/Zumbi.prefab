@@ -71,8 +71,8 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": 673,
-      "y": 252
+      "x": 675,
+      "y": 297
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -118,8 +118,10 @@
     "_alvo": null,
     "_movimentacao": null,
     "_controleAnimacao": null,
+    "_cronometroAtaque": "Float",
+    "tempoAtaque": "2",
     "distanciaDeAtaque": "50",
-    "dano": "20"
+    "dano": "10"
   },
   {
     "__type__": "d2a1b3AgKtAEYrHviqli25x",
