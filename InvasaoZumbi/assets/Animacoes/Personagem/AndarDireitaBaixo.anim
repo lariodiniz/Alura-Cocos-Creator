@@ -216,6 +216,22 @@
             }
           }
         ]
+      },
+      "cc.BoxCollider": {}
+    },
+    "paths": {
+      "PosicaoDaArma": {
+        "props": {
+          "position": [
+            {
+              "frame": 0,
+              "value": [
+                33.5,
+                5.4
+              ]
+            }
+          ]
+        }
       }
     }
   },

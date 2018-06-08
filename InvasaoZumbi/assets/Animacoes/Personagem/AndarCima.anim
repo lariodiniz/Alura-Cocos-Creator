@@ -84,6 +84,22 @@
             }
           }
         ]
+      },
+      "cc.BoxCollider": {}
+    },
+    "paths": {
+      "PosicaoDaArma": {
+        "props": {
+          "position": [
+            {
+              "frame": 0,
+              "value": [
+                3.8,
+                94.6
+              ]
+            }
+          ]
+        }
       }
     }
   },

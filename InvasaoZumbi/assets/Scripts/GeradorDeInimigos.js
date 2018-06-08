@@ -43,9 +43,9 @@ cc.Class({
     },
 
     possoGerar(){
-        distanciaAtual = this.node.position.sub(cc.Camera.main.node.position);
+        let distanciaAtual = this.node.position.sub(cc.Camera.main.node.position);
         distanciaAtual = distanciaAtual.mag();
-        longeOSuficiente = distanciaAtual > this._distanciaMinima;
+        let longeOSuficiente = distanciaAtual > this._distanciaMinima;
         return longeOSuficiente;
     }
 });

@@ -157,6 +157,21 @@
           }
         ]
       }
+    },
+    "paths": {
+      "PosicaoDaArma": {
+        "props": {
+          "position": [
+            {
+              "frame": 0,
+              "value": [
+                1.6,
+                83.7
+              ]
+            }
+          ]
+        }
+      }
     }
   },
   "events": []

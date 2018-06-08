@@ -4,19 +4,20 @@ cc.Class({
     extends: cc.Component,
 
     properties: {
+        tiro: cc.Prefab,                
+        vidaMaxima: cc.Float,  
+
         _direcao: cc.Vec2,
         _movimentacao: cc.Component,
         _controleAnimacao: cc.Component,
         _canvas: cc.Canvas,
         _camera: cc.Node,
-        _vidaAtual: cc.Float,
-        
+        _vidaAtual: cc.Float,        
         _teclado: {
             type: cc.Float,
             default:[]
         },
-        tiro: cc.Prefab,                
-        vidaMaxima: cc.Float      
+        _posicaoArma: cc.Node    
     },
 
     // LIFE-CYCLE CALLBACKS:
@@ -32,6 +33,7 @@ cc.Class({
         
         this.node.on("SofreDano", this.sofrerDano, this);
         this._vidaAtual = this.vidaMaxima;
+        this._posicaoArma = this.node.children[0];
     },   
 
     sofrerDano (evento) {
@@ -78,7 +80,7 @@ cc.Class({
         let disparo = cc.instantiate(this.tiro);        
         disparo.getComponent("Tiro").inicializa(
             this.node.parent,
-            this.node.position,
+            this._posicaoArma.position.add(this.node.position),
             direcao
         );
     },
@@ -86,6 +88,7 @@ cc.Class({
     update (deltaTime) {     
         this._direcao = cc.Vec2.ZERO;           
         if (Teclado.estaPressionada(cc.KEY.a)){
+            console.log('a');
             this._direcao.x -= 1;  
         }
         if (Teclado.estaPressionada(cc.KEY.d)){

@@ -85,6 +85,21 @@
           }
         ]
       }
+    },
+    "paths": {
+      "PosicaoDaArma": {
+        "props": {
+          "position": [
+            {
+              "frame": 0,
+              "value": [
+                -47,
+                34.2
+              ]
+            }
+          ]
+        }
+      }
     }
   },
   "events": []

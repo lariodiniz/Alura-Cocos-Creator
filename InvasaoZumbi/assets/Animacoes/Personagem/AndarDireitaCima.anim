@@ -3,7 +3,7 @@
   "_name": "AndarDireitaCima",
   "_objFlags": 0,
   "_rawFiles": null,
-  "_duration": 3.7083333333333335,
+  "_duration": 3.71,
   "sample": 24,
   "speed": 1,
   "wrapMode": 2,
@@ -546,6 +546,21 @@
             }
           }
         ]
+      }
+    },
+    "paths": {
+      "PosicaoDaArma": {
+        "props": {
+          "position": [
+            {
+              "frame": 0,
+              "value": [
+                33,
+                76.8
+              ]
+            }
+          ]
+        }
       }
     }
   },
