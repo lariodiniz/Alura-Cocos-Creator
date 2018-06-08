@@ -87,8 +87,7 @@ cc.Class({
 
     update (deltaTime) {     
         this._direcao = cc.Vec2.ZERO;           
-        if (Teclado.estaPressionada(cc.KEY.a)){
-            console.log('a');
+        if (Teclado.estaPressionada(cc.KEY.a)){            
             this._direcao.x -= 1;  
         }
         if (Teclado.estaPressionada(cc.KEY.d)){

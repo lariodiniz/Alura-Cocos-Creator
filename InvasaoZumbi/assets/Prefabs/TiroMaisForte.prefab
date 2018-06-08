@@ -40,9 +40,9 @@
     "_opacity": 255,
     "_color": {
       "__type__": "cc.Color",
-      "r": 0,
-      "g": 255,
-      "b": 20,
+      "r": 168,
+      "g": 28,
+      "b": 28,
       "a": 255
     },
     "_cascadeOpacityEnabled": true,
@@ -138,7 +138,7 @@
       "__id__": 1
     },
     "_enabled": true,
-    "dano": "5",
+    "dano": "15",
     "_movimentacao": null,
     "_audioTiro": null
   },
@@ -165,9 +165,9 @@
       "__id__": 1
     },
     "asset": {
-      "__uuid__": "b9f30e77-a91a-47fd-b23f-eac4661e1eb9"
+      "__uuid__": "64a77429-ac1f-46f5-b78c-2cd783b19424"
     },
-    "fileId": "12PrpjZRRLhrj7FiOED6rs",
+    "fileId": "dbN+2ws31Md7yf0hnL4eZ6",
     "sync": false
   }
 ]

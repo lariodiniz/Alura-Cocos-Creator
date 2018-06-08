@@ -20,7 +20,11 @@ cc.Class({
     },
 
     setDirecao (direcao){
-        this._direcao = direcao.normalize();
+        let di = direcao;
+        if (di != cc.Vec2.ZERO){
+            di = di.normalize();
+        }
+        this._direcao = di;
     },
 
     andarParaFrente(){

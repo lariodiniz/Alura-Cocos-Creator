@@ -2,6 +2,7 @@ cc.Class({
     extends: cc.Component,
 
     properties: {
+        dano: cc.Float,
         _movimentacao : cc.Component,
         _audioTiro: cc.AudioSource
     },
@@ -15,7 +16,7 @@ cc.Class({
     },
 
     onCollisionEnter (outro){
-        outro.node.emit("SofrerDano");
+        outro.node.emit("SofrerDano",{dano: this.dano});
         this.node.destroy()
     },
 
